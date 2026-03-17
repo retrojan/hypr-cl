@@ -1,0 +1,164 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 8,
+    "margin-top": 5,
+    "margin-bottom": 0,
+    "margin-left": 5,
+    "margin-right": 5,
+
+    // Left modules
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    // Center modules
+    "modules-center": [
+        "clock"
+    ],
+    // Right modules
+    "modules-right": [
+        "cpu",
+        "memory",
+        "battery",
+        "custom/keyboard-layout",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "network",
+        "tray",
+        "custom/power"
+    ],
+    // Workspaces
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十"
+        },
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    },
+    // Microphone
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "  Muted",
+        "on-click": "pamixer --default-source -t",
+        "on-click-right": "pavucontrol",
+        "scroll-step": 5,
+        "tooltip": true,
+        "tooltip-format": "Microphone: {volume}%"
+    },
+    // Audio
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t",
+        "scroll-step": 5,
+        "tooltip": true,
+        "tooltip-format": "Volume: {volume}%"
+    },
+    // Keyboard layout
+    "custom/keyboard-layout": {
+        "format": "  {}",
+        "exec": "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | cut -c1-2 | tr '[:lower:]' '[:upper:]'",
+        "interval": 0.1,
+        "tooltip": true,
+        "on-click": "hyprctl switchxkblayout all next"
+    },
+    // Clock
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#bb9af7'><b>{}</b></span>",
+                "days": "<span color='#c0caf5'>{}</span>",
+                "weeks": "<span color='#9ece6a'><b>W{}</b></span>",
+                "weekdays": "<span color='#7aa2f7'><b>{}</b></span>",
+                "today": "<span color='#ff9e64'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    // Network
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "  Connected",
+        "format-disconnected": "  Offline",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "nm-connection-editor"
+    },
+
+    // Battery
+    "battery": {
+        "bat": "BAT0",
+        "adapter": "ACAD",
+        "full-at": 100,
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        }
+    },
+    // CPU / Procesor
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true,
+        "interval": 2
+    },
+
+    // RAM / Memory
+    "memory": {
+        "format": "  {percentage}%",
+        "tooltip": true,
+        "interval": 5
+    },
+    // Tray
+    "tray": {
+        "icon-size": 22,
+        "spacing": 10
+    },
+
+    // Power / wlogout
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": "Power Menu"
+    }
+}

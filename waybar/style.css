@@ -1,0 +1,190 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window#waybar > box {
+    background: rgba(26, 27, 38, 1);
+    border-radius: 10px;
+    border: 2px solid #bb9af7;
+}
+
+
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#custom-power {
+    padding: 0 15px;
+    margin: 3px 3px;
+    background: transparent;
+    border-radius: 0px;
+}
+
+#workspaces {
+    padding: 0 5px;
+    background: transparent
+}
+
+#workspaces button {
+    padding: 0 8px;
+    background: transparent;
+    color: #565f89;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+#workspaces button:hover {
+    background: rgba(187, 154, 247, 0.3);
+    color: #bb9af7;
+}
+
+#workspaces button.active {
+    color: #bb9af7;
+    background: rgba(187, 154, 247, 0.2);
+    border-bottom: 2px solid #bb9af7;
+}
+
+#workspaces button.urgent {
+    color: #f7768e;
+    animation: blink 0.5s infinite;
+}
+
+#clock {
+    color: #c0caf5;
+    font-weight: bold;
+    font-size: 15px;
+    background: rgba(0, 0, 0, 0);
+    padding: 0 20px;
+}
+
+#cpu {
+    color: #9ece6a;
+}
+
+#cpu.warning {
+    color: #e0af68;
+}
+
+#cpu.critical {
+    color: #f7768e;
+}
+
+#memory {
+    color: #bb9af7;
+}
+
+#memory.warning {
+    color: #e0af68;
+}
+
+#memory.critical {
+    color: #f7768e;
+}
+
+#network {
+    color: #7aa2f7;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+#pulseaudio {
+    color: #73daca;
+    padding: 0 20px;
+}
+/*
+#pulseaudio.muted {
+    color: #565f89;
+}
+*/
+
+#battery {
+    color: #9ece6a;
+}
+
+#battery.warning {
+    color: #e0af68;
+}
+
+#battery.critical {
+    color: #f7768e;
+}
+
+#battery.charging {
+    color: #9ece6a;
+}
+
+#tray {
+    background: transparent;
+    padding: 0 10px;
+    min-width: 20px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #f7768e;
+    border-radius: 100%;
+}
+
+#tray > widget {
+    padding: 0 2px;
+}
+
+#custom-power {
+    color: #f7768e;
+    font-size: 18px;
+    padding: 0 18px;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+#custom-power:hover {
+    background: rgba(247, 118, 142, 0.2);
+}
+
+#custom-keyboard-layout {
+    padding: 0 15px;
+    margin: 3px 3px;
+    background: transparent;
+    border-radius: 8px;
+    color: #7dcfff;
+}
+
+
+@keyframes blink {
+    to {
+        color: #f7768e;
+        border-bottom: 2px solid #f7768e;
+    }
+}
+
+tooltip {
+    background: rgba(26, 27, 38, 0.95);
+    border: 1px solid #bb9af7;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+tooltip label {
+    color: #c0caf5;
+    font-size: 13px;
+}
+
