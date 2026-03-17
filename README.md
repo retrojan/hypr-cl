@@ -33,5 +33,5 @@ yay -S wlogout
 https://aur.archlinux.org/packages/wlogout
 
 # FOR OTHER DISTRO:
-U need `pamixer pavucontrol jq ttf-font-awesome wlogout`
+U need `pamixer pavucontrol jq ttf-font-awesome wlogout` for waybar
 
