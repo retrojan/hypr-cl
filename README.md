@@ -6,10 +6,21 @@
 
 </p>
 
+# install
 
+Clone repository:
 ```bash
-git clone https://github.com/retrojan/hypr-cl.git
+git clone https://github.com/retrojan/hypr-cl.git && cd ./hypr-cl
 ```
+Waybar(bar) copy to `~/.config/`:
+```
+cp ./waybar ~/.config/
+```
+Dunst(notify) copy to `~/.config`:
+```
+cp ./dunst ~/.config/
+```
+
 ## Arch
 Pacman:
 ```bash
