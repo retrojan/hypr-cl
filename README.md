@@ -1,6 +1,7 @@
 # cl-waybar
+<img width="2560" height="93" alt="изображение" src="https://github.com/user-attachments/assets/ab1b6e79-61b0-411d-a4cc-28327c526351" />
 
-<img width="2558" height="51" alt="изображение" src="https://github.com/user-attachments/assets/8b46dcba-35ae-47e8-8439-d55b4f7dd167" />
+
 
 # Auto install
 ```bash
