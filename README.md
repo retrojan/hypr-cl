@@ -8,30 +8,35 @@
 
 # install
 
-Clone repository:
+1. Clone repository:
 ```bash
 git clone https://github.com/retrojan/hypr-cl.git && cd ./hypr-cl
 ```
-Waybar(bar) copy to `~/.config/`:
+2. Copy configs to ~/.config/
 ```
-cp ./waybar ~/.config/
+cp -r ./waybar ~/.config/
 ```
-Dunst(notify) copy to `~/.config`:
 ```
-cp ./dunst ~/.config/
+cp -r ./dunst ~/.config/
 ```
 
 ## Arch
-Pacman:
+### Waybar
+Pacman
 ```bash
-sudo pacman -S pamixer pavucontrol jq ttf-font-awesome dunst
+sudo pacman -S pamixer pavucontrol jq ttf-font-awesome dunst ttf-jetbrains-mono-nerd
 ```
-AUR (yay):
+AUR (yay)
 ```bash
 yay -S wlogout
 ```
 https://aur.archlinux.org/packages/wlogout
 
+### Dunst
+```bash
+sudo pacman -S dunst libnotify ttf-jetbrains-mono-nerd papirus-icon-theme
+```
 # FOR OTHER DISTRO:
-U need `pamixer pavucontrol jq ttf-font-awesome wlogout` for waybar
+You need: `pamixer pavucontrol jq ttf-font-awesome ttf-jetbrains-mono-nerd wlogout` for waybar
 
+You need: `dunst libnotify ttf-jetbrains-mono-nerd papirus-icon-theme` for dunst
