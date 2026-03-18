@@ -2,7 +2,8 @@
 
 <p align="center">
 <img width="2560" height="93" alt="waybar" src="https://github.com/user-attachments/assets/ab1b6e79-61b0-411d-a4cc-28327c526351" />
-<img width="314" height="76" alt="изображение" src="https://github.com/user-attachments/assets/bf979054-c679-418b-b437-36e219601180" />
+<img width="315" height="80" alt="dunst" src="https://github.com/user-attachments/assets/8329fa81-a530-488b-b147-b3384f54c00a" />
+
 
 </p>
 
