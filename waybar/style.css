@@ -1,28 +1,36 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
-    font-size: 14px;
-    min-height: 0;
+border: none;
+border-radius: 0;
+font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+font-size: 14px;
+min-height: 0;
 }
 
 window#waybar { background: transparent; }
 window#waybar > box { background: rgba(26, 27, 38, 1); border-radius: 10px; border: 2px solid #bb9af7; padding: 0 5px; }
 
-#workspaces { padding: 0 5;background: transparent; }
-#workspaces button { color: #565f89; padding: 0 10px; font-size: 30px}
-#workspaces button.active { color: #bb9af7; background: rgba(187, 154, 247, 0.15); border-bottom: 2px solid #bb9af7; }
-#workspaces button:hover { background: rgba(187, 154, 247, 0.2); color: #bb9af7; }
+#workspaces {background: transparent; }
+#workspaces button { color: #c0caf5; padding: 0 10px; font-size: 30px}
+#workspaces button.active { color: #bb9af7; background: rgba(187, 154, 247, 0.15); }
+#workspaces button:hover { background: rgba(187, 154, 247, 0.15);}
 
 #clock { color: #c0caf5; font-weight: bold; font-size: 15px; padding: 0 10px; }
 
-#cpu { color: #a1ff79; padding: 0 8px; }
-#cpu.warning { color: #ffd56a; }
-#cpu.critical { color: #f76269; }
+#custom-cpu { color: #a1ff79; padding: 0 8px; }
+#custom-cpu.warning { color: #ffd56a; }
+#custom-cpu.critical { color: #f76269; }
+
+#custom-gpu { color: #ff9e64;padding: 0 8px; }
+#custom-gpu.warning { color: #ffd56a; }
+#custom-gpu.critical { color: #f76269; }
+
 
 #memory { color: #bb9af7; padding: 0 8px; }
 #memory.warning { color: #ffd56a; }
 #memory.critical { color: #f76269; }
+
+#custom-arch { font-size: 18px; padding: 0 2px; min-width: 24px;
+}
 
 #custom-keyboard-layout { padding: 0 10px; margin: 3px 0; color: #7dcfff; background: transparent; }
 
@@ -49,5 +57,5 @@ window#waybar > box { background: rgba(26, 27, 38, 1); border-radius: 10px; bord
     to { color: #f7768e; border-bottom: 2px solid #f7768e; }
 }
 
-tooltip { background: rgba(26, 27, 38, 0.95); border: 1px solid #bb9af7; border-radius: 8px; padding: 8px; }
+tooltip { background: rgba(26, 27, 38, 1); border-radius: 8px; padding: 8px; }
 tooltip label { color: #c0caf5; font-size: 13px; }

@@ -8,11 +8,15 @@
     "margin-left": 5,
     "margin-right": 5,
 
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": [
+    "custom/arch",
+    //"hyprland/workspaces"
+        "custom/cpu",
+        "custom/gpu",
+        "memory",
+    ],
     "modules-center": ["clock"],
     "modules-right": [
-        "cpu",
-        "memory",
         "battery",
         "custom/keyboard-layout",
         "pulseaudio",
@@ -21,6 +25,12 @@
         "tray",
         "custom/power"
     ],
+    "custom/arch": {
+        "format": "<span font='JetBrains Mono 18'></span>",
+        "exec": "echo ' '",
+        "interval": 3600,
+        "tooltip": false
+    },
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -30,7 +40,7 @@
         "format-icons": {
         "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
         "6": "6", "7": "7", "8": "8", "9": "9", "10": "10" },
-        "persistent-workspaces": {"*": 3}
+        "persistent-workspaces": {"*": 5}
     },
 
     "clock": {
@@ -43,24 +53,40 @@
             "weeks-pos": "right",
             "on-scroll": 1,
             "format": {
-                "months": "<span color='#bb9af7'><b>{}</b></span>",
-                "days": "<span color='#c0caf5'>{}</span>",
-                "weeks": "<span color='#9ece6a'><b>W{}</b></span>",
-                "weekdays": "<span color='#7aa2f7'><b>{}</b></span>",
-                "today": "<span color='#ff9e64'><b><u>{}</u></b></span>"
+            "months": "<span font='JetBrains Mono Bold 12' color='#bb9af7'><b>{}</b></span>",
+            "days": "<span font='JetBrains Mono 11' color='#c0caf5'>{}</span>",
+            "weeks": "<span font='JetBrains Mono Bold 10' color='#9ece6a'>W{}</span>",
+            "weekdays": "<span font='JetBrains Mono Bold 11' color='#7aa2f7'><b>{}</b></span>",
+            "today": "<span font='JetBrains Mono Bold 12' color='#ff9e64'><b>{}</b></span>"
             }
         }
     },
 
-    "cpu": { "format": " {usage}%", "tooltip": true, "tooltip-format": "CPU Usage: {usage}%", "interval": 2 },
-    "memory": { "format": "    {percentage}%", "tooltip": true,  "tooltip-format": "Memory: {percentage}% used\nAvailable: {avail} GB", "interval": 5},
+        "custom/gpu": {
+        "exec": "echo '󰾲 '$(nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,noheader,nounits | awk -F ', ' '{print $1\"% | \"$2\"°C\"}')",
+        "interval": 2,
+        "tooltip": false,
+        "tooltip-format": "GPU Usage: {}",
+        "format": "{}"
+    },
+
+    "custom/cpu": {
+        "exec": "usage=$(top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'%' -f1); temp=$(cat /sys/class/thermal/thermal_zone0/temp 2>/dev/null | awk '{print int($1/1000)}' || echo 'N/A'); echo \" ${usage}% | ${temp}°C\"",
+        "interval": 2,
+        "tooltip": false,
+        "tooltip-format": "CPU Usage: {}",
+        "format": "{}"
+    },
+    "memory": { "format": "  {percentage}% | {avail} GB", "tooltip": false,  "tooltip-format": "Memory: {percentage}% used\nAvailable: {avail} GB", "interval": 2},
+
+
 
 "custom/keyboard-layout": {
     "format": " {}",
     "exec": "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | cut -c1-2 | tr '[:lower:]' '[:upper:]'",
     "interval": 1,
-    "tooltip": true,
-    "tooltip-format": "Раскладка: {}",
+    "tooltip": false,
+    "tooltip-format": "layout: {}",
     "on-click": "hyprctl switchxkblayout all next"
 },
     "pulseaudio": {
@@ -74,19 +100,20 @@
         "tooltip-format": "Volume: {volume}%"
     },
 
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-click-right": "pavucontrol",
-        "scroll-step": 5,
-        "tooltip": true,
-        "tooltip-format": "Microphone: {volume}%"
-    },
-
+"pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "  Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5,
+    "tooltip": true,
+    "tooltip-format": "Microphone: {source_volume}%"
+},
     "network": {
-        "format-wifi": "  {signalStrength}%",
+        "format-wifi": "   {signalStrength}%",
         "format-ethernet": " Connected",
         "format-disconnected": " Offline",
         "tooltip-format": "{ifname} via {gwaddr}",
@@ -109,5 +136,5 @@
     },
 
     "tray": { "icon-size": 20, "spacing": 10 },
-    "custom/power": { "format": "⏻", "on-click": "wlogout", "tooltip": "Power Menu" }
+    "custom/power": { "format": "⏻", "on-click": "wlogout", "tooltip": false}
 }
