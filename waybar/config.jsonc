@@ -10,13 +10,15 @@
 
     "modules-left": [
     "custom/arch",
-    //"hyprland/workspaces"
         "custom/cpu",
         "custom/gpu",
-        "memory",
+        "memory"
     ],
-    "modules-center": ["clock"],
+    "modules-center": [
+    "clock",
+    ],
     "modules-right": [
+        "hyprland/workspaces",
         "battery",
         "custom/keyboard-layout",
         "pulseaudio",
@@ -136,5 +138,7 @@
     },
 
     "tray": { "icon-size": 20, "spacing": 10 },
-    "custom/power": { "format": "⏻", "on-click": "wlogout", "tooltip": false}
+    "custom/power": { "format": "⏻", "on-click": "wlogout", "tooltip": false,
+    "on-click-right": "rofi -show power-menu -modi power-menu:/home/fr1mee/.local/bin/rofi-power-menu -theme tokyonight",
+    }
 }
